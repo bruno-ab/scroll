@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome to Scroll !{% endblock %}
+
+
+
+{% block body %}
+
+
+ <div class="container-fluid">
+    <h5 class="center-align">
+    <img class="img-fluid" alt="Responsive image" src="{{ asset('assets/banner.jpg') }}"/>
+
+    <div class ="indexbanner">   
+        <p > Sua Aventura começa agora! </p>
+        <p> Você deve se fazer uma pergunta: " Estou com sorte? </p>
+
+        <a href = "/roll/d20"  alt="Teste sua Sorte!">
+        <img class = "roll-button" src="{{ asset('assets/dices/d20.png') }}" />
+        <a>
+    </div>
+        
+</div> 
+
+{% endblock %}

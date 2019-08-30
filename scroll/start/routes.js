@@ -17,4 +17,5 @@
 const Route = use('Route')
 
 Route.on('/').render('welcome')
-Route.get('/health', 'HealthController.index')
+Route.get('/user','UserController.index')
+Route.get('/user/save','UserController.save')

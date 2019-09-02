@@ -17,14 +17,24 @@ class UserController {
           user.username = request.body.username
           user.password = request.body.password
           user.email = request.body.email
-          // await user.save()
+          await user.save()
           return response.status(200).send(`Usuário salvo com sucesso`)
         }catch(err){
           console.log(err)
           return response.json('Falha ao salvar')
         }
+    }
 
+    async getUser ({ params,request, response })
+    {
+      const id = params.id
+      try{
+        const user = await User.find(id)
+        return response.status(200).send(user)
+      }catch(err){
+        return response.json('Não foi possivel encontrar o usuário')
       }
+    }
 }
 
 module.exports = UserController

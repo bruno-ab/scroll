@@ -18,4 +18,5 @@ const Route = use('Route')
 
 Route.on('/').render('welcome')
 Route.get('/user','UserController.index')
+Route.get('/user/:id','UserController.getUser')
 Route.post('/user','UserController.save')

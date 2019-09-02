@@ -5,10 +5,15 @@ const response = use('Adonis/Src/Response')
 
 class UserController {
     async index ({ request, response }) {
-      const users = await User.all()  
-      // console.log(response)]
-     
-      return response.status(200).send(users)
+        try{
+        const users = await User.all()  
+        // console.log(response)]
+      
+        return response.status(200).send(users)
+        }catch(err){
+          console.log(err)
+          response.status(400).json('Erro ao listar')
+        }
       }
 
       async save ({ request, response }) {

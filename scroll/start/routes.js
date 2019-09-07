@@ -18,6 +18,8 @@ const Route = use('Route')
 
 Route.on('/').render('welcome')
 Route.get('/user','UserController.index').middleware('auth')
+Route.get('/dice/:id', 'DiceController.getDice')
+Route.post('/dice', 'DiceController.save')
 Route.get('/user/:id','UserController.getUser').middleware('auth')
 Route.post('/user','UserController.save')
 

@@ -3,51 +3,49 @@
 class DiceController {
     async getDice ({ request, response, params }) {
         
-        const id = params.id
-        const dice = await this.rollDice(id)
         
-        this.rollDice = request.post()
-           
+        const minDice = params.minDice
+        const maxDice = params.maxDice
+        
+        
+        const number = params.number
+        
+        const dice = await this.rollDice(minDice, maxDice, number)
+        
+        
+        
+        this.rollDice = await request.post()
         return response.json(dice)
                 
         
         
     }
     
-    async rollDice(max){
+    async rollDice(min,max){
         
-        max = Math.ceil(max);
-        
-        if (max == 20) {
-            return Math.floor(Math.random() * 20) + 1  
-        } 
-        else if ( max == 12) {
-            return Math.floor(Math.random() * 12) + 1
-        }
-        else if ( max == 10) {
-            return Math.floor(Math.random() * 10) + 1
-        }
-        else if ( max == 8) {
-            return Math.floor(Math.random() * 8) + 1
-        }
-        else if ( max == 6) {
-            return Math.floor(Math.random() * 6) + 1
-        }
-        else if ( max == 4) {
-            return Math.floor(Math.random() * 4) + 1
-        }
-        else if ( max == 100) {
-            return Math.floor(Math.random() * 100) + 1
-        }
-        else {
-            return ('Tipo de Dado inválido.')
-        }    
-    
-            
-        }
+       
+        min = 1;
+        max = Math.floor(max);
+        var chekDice = [100,20,12,10,8,6,4]
+        var n = chekDice.includes(max)
 
+        if (n == true) {
+
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+            
+        } else {
+            return ('Tipo de Dado inválido')
+        }
+        
+   
+    }
     
-}
+}    
+     
+       
+    
+    
+
 
 
 module.exports = DiceController

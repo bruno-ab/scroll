@@ -16,10 +16,15 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
+
 Route.on('/').render('welcome')
+// USER ROUTES
 Route.get('/user','UserController.index').middleware('auth')
-Route.get('/dice/:minDice/:maxDice', 'DiceController.getDice')
-Route.get('/user/:id','UserController.getUser').middleware('auth')
+Route.get('/user/:id','UserController.getUser').middleware()
 Route.post('/user','UserController.save')
+// DICE ROUTES
+Route.get('/dice/:minDice/:maxDice', 'DiceController.getDice')
+// TESTE ROUTES
+Route.get('/test/classes/:id', 'TestController.getClasses').middleware('cache')
 
 Route.post('/sessions', 'SessionController.create')

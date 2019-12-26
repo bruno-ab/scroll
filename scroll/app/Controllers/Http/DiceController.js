@@ -6,19 +6,16 @@ class DiceController {
         
         const minDice = params.minDice
         const maxDice = params.maxDice
-        
-        
         const number = params.number
+        const dices = []
+
+        for (let index = 0; index < quantityDices; index++) {
+            const dice = await this.rollDice(minDice, maxDice, number)
+            dices.push(dice)    //         
+        }
         
-        const dice = await this.rollDice(minDice, maxDice, number)
-        
-        
-        
-        this.rollDice = await request.post()
-        return response.json(dice)
-                
-        
-        
+        return response.json(dices);
+       
     }
     
     async rollDice(min,max){

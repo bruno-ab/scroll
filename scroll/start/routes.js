@@ -26,5 +26,10 @@ Route.post('/user','UserController.save')
 Route.get('/dice/:minDice/:maxDice', 'DiceController.getDice')
 // TESTE ROUTES
 Route.get('/test/classes/:id', 'TestController.getClasses').middleware('cache')
+// Characters Controller
+Route.post('/character/create','CharacterController.create')
+Route.get('/character/get/all', 'CharacterController.index')
+Route.get('/classes/get/:idClass', 'CharacterController.getCharacters')
 
+// Session
 Route.post('/sessions', 'SessionController.create')

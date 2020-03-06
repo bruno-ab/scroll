@@ -23,7 +23,7 @@ Route.get('/user','UserController.index').middleware('auth')
 Route.get('/user/:id','UserController.getUser').middleware()
 Route.post('/user','UserController.save')
 // DICE ROUTES
-Route.get('/dice/:minDice/:maxDice', 'DiceController.getDice')
+Route.get('/dice/:minDice/:maxDice/:number', 'DiceController.getDice')
 // TESTE ROUTES
 Route.get('/test/classes/:id', 'TestController.getClasses').middleware('cache')
 // Characters Controller

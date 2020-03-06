@@ -9,7 +9,7 @@ class DiceController {
         const number = params.number
         const dices = []
 
-        for (let index = 0; index < quantityDices; index++) {
+        for (let index = 0; index < number; index++) {
             const dice = await this.rollDice(minDice, maxDice, number)
             dices.push(dice)    //         
         }
@@ -18,14 +18,15 @@ class DiceController {
        
     }
     
-    async rollDice(min,max){
+    async rollDice(min,max,number){
         
-       
+        repeat = number 
         min = 1;
         max = Math.floor(max);
         var chekDice = [100,20,12,10,8,6,4]
         var n = chekDice.includes(max)
 
+        for (i in range(repeat)) {
         if (n == true) {
 
             return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -33,7 +34,7 @@ class DiceController {
         } else {
             return ('Tipo de Dado inválido')
         }
-        
+    }
    
     }
     

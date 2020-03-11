@@ -9,22 +9,30 @@ class DiceController {
         const number = Number(params.number)
         const dices = []
         let success = 0
+        let failures = 0
         for (let index = 0; index < number; index++) {
             // function to roll dices! good lucky
             const dice = await this.rollDice(minDice, maxDice, number)
             dices.push(dice)         
         }
-        
+
         if(query.cd) {
             for(let dice of dices) {
                 if(dice >= query.cd) success++ 
             }
         }
         
+        if (query.failures) {
+            for(let dice of dices) {
+                if(dice ===  1 ) failures++ 
+            }
+        }
+        
         const data = {
             dicesRolled: number,
             result: dices,
-            success: success
+            success: success,
+            failures: failures
         }
         return response.json(data)
        

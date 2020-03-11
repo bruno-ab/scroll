@@ -3,9 +3,10 @@
 class DiceController {
     async getDice ({ request, response, params }) {
         
-        const minDice = params.minDice
-        const maxDice = params.maxDice
-        const number = params.number
+        // console.log(request)
+        const minDice = Number(params.minDice)
+        const maxDice = Number(params.maxDice)
+        const number = Number(params.number)
         const dices = []
 
         for (let index = 0; index < number; index++) {
@@ -23,19 +24,13 @@ class DiceController {
     }
     
     async rollDice(min,max,number){
-        
-        // const repeat = number 
-        min = 1;
-        max = Math.floor(max);
-        const chekDice = [100,20,12,10,8,6,4]
-        const n = chekDice.includes(max)
 
-        if (n == true) {
-
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-            
+        const checkDice = [100,20,12,10,8,6,4]
+        const n = checkDice.includes(max)
+        if (n === true) {
+            return Math.floor(Math.random() * (max - min + 1)) + min
         } else {
-            return ('Tipo de Dado inválido')
+            return 0
         }
     
    

@@ -3,15 +3,15 @@
 class DiceController {
     async getDice ({ request, response, params }) {
         
-        
         const minDice = params.minDice
         const maxDice = params.maxDice
         const number = params.number
         const dices = []
 
         for (let index = 0; index < number; index++) {
+            // function to roll dices! good lucky
             const dice = await this.rollDice(minDice, maxDice, number)
-            dices.push(dice)    //         
+            dices.push(dice)         
         }
         
         const data = {

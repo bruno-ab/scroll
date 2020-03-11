@@ -16,12 +16,13 @@ class DiceController {
             dices.push(dice)         
         }
 
+        // check success if exist in query
         if(query.cd) {
             for(let dice of dices) {
                 if(dice >= query.cd) success++ 
             }
         }
-        
+        // check failures if true in query
         if (query.failures) {
             for(let dice of dices) {
                 if(dice ===  1 ) failures++ 

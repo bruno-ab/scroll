@@ -14,19 +14,22 @@ class DiceController {
             dices.push(dice)    //         
         }
         
-        return response.json(dices);
+        const data = {
+            dicesRolled: number,
+            result: dices
+        }
+        return response.json(data)
        
     }
     
     async rollDice(min,max,number){
         
-        repeat = number 
+        // const repeat = number 
         min = 1;
         max = Math.floor(max);
-        var chekDice = [100,20,12,10,8,6,4]
-        var n = chekDice.includes(max)
+        const chekDice = [100,20,12,10,8,6,4]
+        const n = chekDice.includes(max)
 
-        for (i in range(repeat)) {
         if (n == true) {
 
             return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -34,7 +37,7 @@ class DiceController {
         } else {
             return ('Tipo de Dado inválido')
         }
-    }
+    
    
     }
     

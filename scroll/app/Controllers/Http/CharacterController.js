@@ -1,7 +1,7 @@
 'use strict'
 const axios = require('axios');
 const mongoose = require('mongoose')
-const PlayerCharacter = use('App/Models/Character')
+const PlayerCharacter = use('App/Models/Characters')
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
@@ -10,7 +10,7 @@ const PlayerCharacter = use('App/Models/Character')
 /**
  * Resourceful controller for interacting with characters
  */
-class CharacterController {
+class CharactersController {
   /**
    * Show a list of all characters.
    * GET characters

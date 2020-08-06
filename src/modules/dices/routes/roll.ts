@@ -1,12 +1,37 @@
 import {Request, Response} from 'express'
 
+const dices = [
+    'd4','d6','d8','d10','d12','d20','d100'
+]
+
 const rollDice = async (req: Request, res: Response) => {
+    try{
+        let quantity = 1
+        let dice: any = 'd20'
+        
+        if (req.query.dice) {
+            dice = req.query.dice
+            if(!dices.includes(dice)){
+                return res.status(400).json('Formato de dado inválido para rolagem')
+            }
+        }
     
-    const dice: any = req.query.dice
-    const rolls = []
-    const roll = await getLucky(dice)
-    rolls.push(roll)
-    return res.status(200).json(rolls)
+        if (req.query.quantity) quantity = Number(req.query.quantity)
+        
+        const rolls = []
+        let i = 0
+
+        while(i < quantity){
+            const roll = await getLucky(dice)
+            rolls.push(roll)
+            i++
+        }
+       
+        return res.status(200).json(rolls)
+    }catch(err){
+        console.log(err)
+        return res.status(400).json('Erro na rolagem de dados')
+    }   
 }
 
 const getDice = async (dice: string) => {

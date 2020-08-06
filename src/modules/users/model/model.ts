@@ -12,7 +12,7 @@ export default {
     required: true
   },
   fullName: {
-    type: Number,
+    type: String,
     required: true
   },
   email: {
@@ -24,5 +24,5 @@ export default {
   },
   password: { type: String, minlength: [6, 'A senha deve conter no mínimo 6 digitos'] },
   isActive: { type: Boolean, default: true },
-  phone: { type: String, unique: true, required: true, index: true, set: unFormat },
+  phone: { type: String, unique: true, required: true, index: true },
 }

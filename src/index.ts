@@ -3,7 +3,6 @@ import {connect} from './services/connect'
 import {allRoutes} from './routes'
 import bodyParser from 'body-parser'
 require("dotenv").config()
-//require("./src/modules/services/connectDb");
 const app = express()
 
 connect()

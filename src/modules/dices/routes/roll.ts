@@ -44,7 +44,7 @@ const getLucky = async (dice: string) => {
 }
 
 
-const getRandomNumberFromDice =  async (min: number, max: number) => {
+const getRandomNumberFromDice =  async (min: number = 1, max: number) => {
     const result = Math.floor(Math.random() * (max - min)) + min
   
     return result

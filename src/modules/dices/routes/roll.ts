@@ -50,4 +50,4 @@ const getRandomNumberFromDice =  async (min: number = 1, max: number) => {
     return result
 }
 
-export { rollDice }
+export { rollDice, getDice, getLucky,getRandomNumberFromDice }

@@ -9,25 +9,32 @@ const getCampaigns = async (req: Request, res: Response)  => {
        const aggregate: any = [
         {$match: {
             $expr:{
-                $or:[
-                    {$in: [playerId, '$players']},
-                    {$eq: ['$master',playerId]}
-                ]
+                $and: [
+                    {$or:[
+                        {$in: [playerId, '$players']},
+                        {$eq: ['$master',playerId]},
+                    ]},
+                    {$and: [
+                            {$eq:['$isActive', true]}
+                    ]}                    
+                ], 
             }
         }},
         {
             $project: {
                 _id: 1,
-                name: 1
+                name: 1,
+                players: 1
             }
         }
        ]
 
-       const users =  await CampaignSchema.aggregate(aggregate)
+       const campaigns =  await CampaignSchema.aggregate(aggregate)
     
-        return res.status(200).json(users)
+        return res.status(200).json(campaigns)
     }catch(err){
-        return res.status(400).json('Erro ao obter usuários')
+        console.log(err)
+        return res.status(400).json('Erro ao obter campanhas')
     }
 
 }

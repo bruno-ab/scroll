@@ -2,6 +2,7 @@ import { Router } from 'express'
 import authenticate from '../../../middleware/authenticate'
 import {createCharacter} from './post'
 import {getCharacter} from './get'
+import {getCharacterByCampaign} from './getByCampaign'
 const CharacterRoutes = Router()
 
 // CampaignsRoutes.use(authenticate)
@@ -9,6 +10,7 @@ const CharacterRoutes = Router()
 CharacterRoutes
     .post('/create', createCharacter)
     .get('/:id', getCharacter)
+    .get('/campaign/:id', getCharacterByCampaign)
 
 
 

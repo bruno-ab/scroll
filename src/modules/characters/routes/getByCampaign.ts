@@ -2,20 +2,15 @@ import {Request, Response} from 'express'
 import CharacterSchema from '../model/schema'
 import mongoose from 'mongoose'
 
-const getCharacter = async (req: Request, res: Response)  => {
+const getCharacterByCampaign = async (req: Request, res: Response)  => {
     const {id} = req.params
-    const playerId = mongoose.Types.ObjectId(id)
+    const campaignId = mongoose.Types.ObjectId(id)
 
     const filters: any = {}
 
-    if(req.query.campaign){
-        const campaignId = mongoose.Types.ObjectId(String(req.query.campaign))
-        filters.campaign  =  {$eq: [campaignId, '$campaign']}
-        filters.active =  {$eq:['$isActive', true]}
-    }
     try{
        const aggregate: any = [
-        {$match: { player: playerId} },
+        {$match: { campaign: campaignId} },
         {$lookup:{
             from:'users',
             localField: 'player',
@@ -38,9 +33,9 @@ const getCharacter = async (req: Request, res: Response)  => {
         return res.status(200).json(characters)
     }catch(err){
         console.log(err)
-        return res.status(400).json('Erro ao obter campanhas')
+        return res.status(400).json('Erro ao obter personagens')
     }
 
 }
 
-export { getCharacter }
+export { getCharacterByCampaign }

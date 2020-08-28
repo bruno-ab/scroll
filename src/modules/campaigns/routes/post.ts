@@ -13,7 +13,7 @@ const createCampaign = async (req: Request, res: Response)  => {
        
         if (countCampaigns.length >= 2) return res.status(401).json('Numero máximo de campanhas já criadas')
        
-        // await CampaignSchema.create(campaign)
+        await CampaignSchema.create(campaign)
         
         return res.status(200).json('Campanha criada com sucesso')
     }catch(err){
